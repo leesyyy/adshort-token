@@ -3,165 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADSHORT | DeepCheck AI & Token</title>
+    <title>ADSHORT | Watch & Earn AIAD Token</title>
     <style>
         :root {
-            --primary: #6e40c9;
-            --secondary: #58a6ff;
-            --bg: #0d1117;
-            --card-bg: #161b22;
-            --border: #30363d;
-            --text: #e6edf3;
-            --accent: #3fb950;
+            --primary: #8a2be2;
+            --secondary: #00ffcc;
+            --bg: #09090b;
+            --card-bg: #18181b;
+            --border: #27272a;
+            --text: #f4f4f5;
+            --accent: #eab308;
         }
-        body { margin: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
-        header { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, var(--primary), #1f2428); border-bottom: 1px solid var(--border); }
-        h1 { margin: 0; font-size: 3.5rem; color: #fff; letter-spacing: -1px; }
-        .subtitle { font-size: 1.25rem; color: #c9d1d9; margin-top: 10px; }
+        body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        header { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, var(--primary), #110e1b); border-bottom: 1px solid var(--border); }
+        h1 { margin: 0; font-size: 3.5rem; color: #fff; letter-spacing: -1px; text-shadow: 0 0 20px rgba(138, 43, 226, 0.5); }
+        .subtitle { font-size: 1.25rem; color: #d4d4d8; margin-top: 15px; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         
-        /* DeepCheck AI Section */
-        .deepcheck-container {
-            background: linear-gradient(180deg, #1f2428 0%, var(--card-bg) 100%);
-            border: 2px solid var(--secondary);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
-        }
-        .deepcheck-title { color: var(--secondary); font-size: 2rem; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .upload-area {
-            border: 2px dashed var(--border);
-            padding: 60px;
-            border-radius: 12px;
-            margin: 20px 0;
-            background: rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .upload-area:hover { border-color: var(--secondary); background: rgba(88, 166, 255, 0.05); }
-        .scan-btn {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .scan-btn:hover { transform: scale(1.05); background-color: #4a95e6; }
+        /* Hero Section */
+        .hero { display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 50px; }
+        .hero-box { flex: 1; min-width: 300px; background: var(--card-bg); padding: 40px; border-radius: 16px; border: 1px solid var(--border); transition: transform 0.3s; }
+        .hero-box:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .hero-box h2 { color: var(--secondary); margin-top: 0; font-size: 1.8rem; }
+        .icon { font-size: 3rem; margin-bottom: 15px; display: block; }
 
-        /* Info Cards */
+        /* Ecosystem Flow */
+        .flow-container { background: #111113; border: 1px solid var(--border); border-radius: 16px; padding: 40px; margin-bottom: 50px; text-align: center; }
+        .flow-title { color: var(--accent); font-size: 2rem; margin-bottom: 30px; }
+        .flow-steps { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .step { background: var(--card-bg); padding: 20px; border-radius: 12px; width: 250px; border: 1px dashed var(--secondary); }
+        .arrow { font-size: 2rem; color: var(--primary); font-weight: bold; }
+
+        /* Token Info */
         .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-bottom: 30px; }
         .address-box { 
-            background-color: #010409; 
+            background-color: #000; 
             padding: 15px; 
             border-radius: 8px; 
             font-family: 'Consolas', monospace; 
-            color: var(--accent); 
+            color: var(--secondary); 
             border: 1px solid var(--border);
             margin: 15px 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
             word-break: break-all;
+            text-align: center;
         }
-        .btn-outline {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid var(--border);
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-        .btn-outline:hover { background: var(--border); }
         
-        footer { text-align: center; padding: 40px; color: #8b949e; border-top: 1px solid var(--border); }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(63, 185, 80, 0.1);
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
+        .badge { display: inline-block; padding: 5px 15px; background: rgba(0, 255, 204, 0.1); color: var(--secondary); border: 1px solid var(--secondary); border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; }
+
+        footer { text-align: center; padding: 40px; color: #71717a; border-top: 1px solid var(--border); margin-top: 20px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>ADSHORT Platform</h1>
-        <p class="subtitle">AI 딥체크 기술과 블록체인 생태계의 결합</p>
+        <h1>ADSHORT 생태계</h1>
+        <p class="subtitle">"안 쓰는 스마트폰을 켜두기만 하세요. 숨쉬듯 AIAD 코인이 쌓입니다."</p>
     </header>
 
     <div class="container">
-        <!-- DeepCheck AI Interface -->
-        <section class="deepcheck-container">
-            <div class="status-badge">AI Monitoring Active</div>
-            <h2 class="deepcheck-title">🔍 DeepCheck AI</h2>
-            <p>동영상이 AI로 생성되었는지, 조작되었는지 딥러닝 기술로 즉시 판별합니다.</p>
-            
-            <div class="upload-area" id="drop-area">
-                <div style="font-size: 3rem; margin-bottom: 10px;">📤</div>
-                <p>동영상 파일을 드래그하여 놓거나 클릭하여 업로드하세요</p>
-                <p style="font-size: 0.8rem; color: #8b949e;">(MP4, MOV, AVI 지원)</p>
+        
+        <!-- Win-Win Model -->
+        <div class="hero">
+            <div class="hero-box">
+                <span class="icon">📱</span>
+                <h2>시청자 (소비자)</h2>
+                <div class="badge">Watch to Earn</div>
+                <p><strong>서랍 속 공기계로 돈을 버세요!</strong></p>
+                <p>ADSHORT 앱을 켜두면 틱톡처럼 숏폼 광고가 자동 재생됩니다. 광고가 1회 재생될 때마다 귀하의 지갑에 AIAD 토큰이 실시간으로 적립됩니다.</p>
+                <p style="color: #a1a1aa; font-size: 0.9rem;">+ 광고 '좋아요' 및 '링크 접속' 시 추가 특별 보상 지급!</p>
             </div>
             
-            <button class="scan-btn" onclick="simulateScan()">딥체크 시작 (Start Scan)</button>
-            
-            <div id="result-area" style="display: none; margin-top: 30px; padding: 20px; border-top: 1px solid var(--border);">
-                <p id="scan-text">분석 중...</p>
-                <div style="width: 100%; height: 10px; background: #30363d; border-radius: 5px; overflow: hidden;">
-                    <div id="scan-bar" style="width: 0%; height: 100%; background: var(--secondary); transition: width 2s;"></div>
+            <div class="hero-box">
+                <span class="icon">🏢</span>
+                <h2>광고주 (기업)</h2>
+                <div class="badge">Pay per Action</div>
+                <p><strong>가짜 트래픽 없는 확실한 마케팅</strong></p>
+                <p>AIAD 토큰을 구매하여 광고를 집행하세요. 소비자가 실제로 영상을 시청하거나, 링크를 클릭하는 등 <strong>'확실한 행동(Action)'</strong>을 취할 때만 토큰이 소모됩니다.</p>
+            </div>
+        </div>
+
+        <!-- Ecosystem Flow -->
+        <div class="flow-container">
+            <h2 class="flow-title">🔄 상생 거버넌스 순환 구조</h2>
+            <div class="flow-steps">
+                <div class="step">
+                    <h3>1. 토큰 구매</h3>
+                    <p>광고주가 거래소에서 AIAD 토큰 구매 및 시스템 예치</p>
+                </div>
+                <div class="arrow">➔</div>
+                <div class="step">
+                    <h3>2. 광고 시청</h3>
+                    <p>소비자의 유휴 기기에서 광고 자동 재생 및 상호작용</p>
+                </div>
+                <div class="arrow">➔</div>
+                <div class="step">
+                    <h3>3. 실시간 보상</h3>
+                    <p>광고주의 예치금에서 소비자의 지갑으로 AIAD 즉시 전송</p>
                 </div>
             </div>
-        </section>
+            <p style="margin-top: 30px; font-size: 1.1rem; color: #d4d4d8;">참여자가 많아질수록 토큰 가치가 상승하고 생태계가 팽창하는 완벽한 <strong>Web3 기반 자가발전 생태계</strong>입니다.</p>
+        </div>
 
         <!-- Token Info -->
         <div class="card">
-            <h2>💰 AIAD Tokenomics</h2>
-            <p>플랫폼 내 딥체크 서비스 이용 및 광고 결제는 <strong>AIAD</strong> 토큰을 통해 이루어집니다.</p>
+            <h2>💎 AIAD Token (Colligon)</h2>
+            <p>ADSHORT 생태계의 기축 통화이자 거버넌스 투표권입니다. 총 100억 개가 발행되었으며 Polygon 메인넷에서 매우 빠르고 저렴하게 전송됩니다.</p>
             <div class="address-box">
-                Contract: 0x432761eDD1A9a24C843c950d812aD2f3eEE6e2ae
+                0x432761eDD1A9a24C843c950d812aD2f3eEE6e2ae
             </div>
-            <a href="https://polygonscan.com/token/0x432761eDD1A9a24C843c950d812aD2f3eEE6e2ae" target="_blank" class="btn-outline">PolygonScan에서 확인하기</a>
+            <p style="text-align: center; color: #71717a;">자세한 수익 모델 및 토큰 소각(Burn) 계획은 상단 GitHub 레포지토리의 백서(Whitepaper)를 참조하세요.</p>
         </div>
 
-        <!-- Vision -->
-        <div class="card">
-            <h2>🌍 Vision &amp; Roadmap</h2>
-            <p>ADSHORT는 AI 딥체크 기술을 통해 허위 광고를 차단하고, 숏폼 콘텐츠의 진실성을 보장합니다. 투명한 광고 생태계를 위해 AIAD 토큰 소각 모델을 도입할 예정입니다.</p>
-        </div>
     </div>
 
     <footer>
-        &copy; 2026 ADSHORT &amp; DeepCheck AI Ecosystem. All rights reserved.
+        &copy; 2026 ADSHORT Platform. Web3 Watch-to-Earn Ecosystem.
     </footer>
-
-    <script>
-        function simulateScan() {
-            const resultArea = document.getElementById('result-area');
-            const scanBar = document.getElementById('scan-bar');
-            const scanText = document.getElementById('scan-text');
-            
-            resultArea.style.display = 'block';
-            scanBar.style.width = '0%';
-            scanText.innerText = 'AI 데이터베이스 연결 중...';
-            
-            setTimeout(() => {
-                scanBar.style.width = '100%';
-                scanText.innerText = '동영상 프레임 정밀 분석 중 (74% 완료)...';
-            }, 500);
-
-            setTimeout(() => {
-                alert('딥체크 결과: 해당 영상은 98% 확률로 실제 촬영된 원본 영상입니다. (Verified by AIAD)');
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
